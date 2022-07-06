@@ -1,0 +1,101 @@
+<div class="login-img">
+    <div class="page">
+        <div class="">
+            <div class="page login-bg">
+                <div class="page-single">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col mx-auto">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-7 col-lg-5">
+                                        <div class="card">
+                                            <div class="p-4 pt-6 text-center">
+                                                <h1 class="mb-2">Firebase Login</h1>
+                                                <p class="text-muted">Sign In to your account</p>
+                                            </div>
+                                            <form class="card-body pt-3" id="login" name="login"
+                                                [formGroup]="loginForm">
+                                                <div class="form-group">
+                                                    <label class="form-label">Mail or Username</label>
+                                                    <div class="input-group mb-4">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">
+                                                                <i class="fe fe-mail" aria-hidden="true"></i>
+                                                            </span>
+                                                            <input class="form-control" type="email" required=""
+                                                                placeholder="spruko@template.com"
+                                                                formControlName="email">
+                                                        </div>
+                                                        <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required"
+                                                            class="text text-danger mt-1">
+                                                            Email is required
+                                                        </div>
+                                                        <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.email"
+                                                            class="text text-danger mt-1">
+                                                            Invalid Email
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Password</label>
+                                                    <div class="input-group mb-4">
+                                                        <div class="input-group" id="Password-toggle">
+                                                            <a (click)="showPassword()" href="javascript:;"
+                                                                class="input-group-text">
+                                                                <i class="fe fe-eye-off" *ngIf="!show"
+                                                                    aria-hidden="true"></i>
+                                                                <i class="fe fe-eye" *ngIf="show"
+                                                                    aria-hidden="true"></i>
+                                                            </a>
+                                                            <input class="form-control"
+                                                                [type]="show ? 'text' : 'password'"
+                                                                formControlName="password" required="">
+                                                        </div>
+
+                                                        <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required"
+                                                            class="text text-danger mt-1">
+                                                            Password is required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            name="example-checkbox1" value="option1">
+                                                        <span class="custom-control-label">Remeber me</span>
+                                                    </label>
+                                                </div>
+                                                <div class="submit">
+                                                    <button class="btn btn-primary btn-block"
+                                                        [class.loader--text]="authService.showLoader"
+                                                        [disabled]="!loginForm.valid || authService.showLoader"
+                                                        (click)="login()" type="button"><span>{{ authService.showLoader
+                                                            ? '' : 'Login' }}</span>
+                                                    </button>
+                                                </div>
+                                                <div class="text-center mt-3">
+                                                    <p class="mb-2"><a href="javascript:;">Forgot Password</a></p>
+                                                    <p class="text-dark mb-0">Don't have account?<a
+                                                            [routerLink]="'/authentication/register/simple'"
+                                                            class="text-primary ms-1" href="javascript:;">Register</a>
+                                                    </p>
+                                                </div>
+                                            </form>
+                                            <div class="card-body border-top-0 pb-6 pt-2">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="avatar brround me-3 bg-primary-transparent text-primary"
+                                                        (click)="loginGoogle()"><i class="ri-google-fill"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
